@@ -1,29 +1,37 @@
 package lnu.models;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+
 public class Book
 {
-    private final double id;
-    private final String title;
-    private final String author;
-    private final String genre;
-    private final String date;
-    private final double price;
-    private final String description;
+    private static final String STRING_VALUE_DELIMITER = ",";
 
-    public Book(double id, String title, String author, String genre,
-                String date, double price, String description)
+    private final String            id;
+    private final String            title;
+    private final ArrayList<String> authors;
+    private final String            genre;
+    private final String            date;
+    private final double            price;
+    private final String            description;
+
+    public Book(String id, String title, String genre, String date,
+                double price, String description, String... authors)
     {
         this.id = id;
         this.title = title;
-        this.author = author;
         this.genre = genre;
         this.date = date;
         this.price = price;
         this.description = description;
+
+        this.authors = new ArrayList<>();
+        Collections.addAll(this.authors, authors);
     }
 
-    public double getId()
+    public String getId()
     {
         return id;
     }
@@ -33,9 +41,13 @@ public class Book
         return title;
     }
 
-    public String getAuthor()
+    public String getAuthors()
     {
-        return author;
+        if (authors.size() == 1) {
+            return authors.get(0);
+        } else {
+            return String.join(STRING_VALUE_DELIMITER, this.authors);
+        }
     }
 
     public String getGenre()
@@ -56,5 +68,10 @@ public class Book
     public String getDescription()
     {
         return description;
+    }
+
+    public String toString()
+    {
+        return "MJAOA";
     }
 }
