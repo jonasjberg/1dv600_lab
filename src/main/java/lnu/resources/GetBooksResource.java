@@ -1,5 +1,7 @@
 package lnu.resources;
 
+import lnu.models.Book;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,8 +17,8 @@ public class GetBooksResource {
 
 	@GET
 	public String getBooks() {
-		// TODO: Task 1
-		return "";
+
+		Book book1 = new Book()
 	}
 
 }
