@@ -74,4 +74,20 @@ public class Book
     {
         return "MJAOA";
     }
+
+    public String toJSON()
+    {
+        StringBuilder sb = new StringBuilder("{");
+
+        sb.append("\"id\": \"").append(getId()).append("\", ");
+        sb.append("\"title\": \"").append(getTitle()).append("\", ");
+        sb.append("\"author\": \"").append(getAuthors()).append("\", ");
+        sb.append("\"genre\": \"").append(getGenre()).append("\", ");
+        sb.append("\"published\": \"").append(getDate()).append("\", ");
+        sb.append("\"price\": \"").append(getPrice()).append("\", ");
+        sb.append("\"description\": \"").append(getDescription()).append("\", ");
+        sb.append("}");
+
+        return sb.toString();
+    }
 }

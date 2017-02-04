@@ -23,7 +23,6 @@ public class GetBooksResource
     @GET
     public String getBooks()
     {
-
         Book book1 = new Book(
                 "978-0521370950",
                 "The Art of Electronics",
@@ -44,6 +43,7 @@ public class GetBooksResource
                 "performance.",
                 "Paul Horowitz", "Winfield Hill");
 
-        return book1.toString();
+        System.out.println("i hate web development so so so very much");
+        return book1.toJSON();
     }
 }
