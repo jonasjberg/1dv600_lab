@@ -79,9 +79,19 @@ public class Book
     {
         // Bug in dropwizard does not allow returning toJSON() from here.
         // ERROR [2017-02-04 18:25:48,186] io.dropwizard.jersey.errors.LoggingExceptionMapper: Error handling a request: 4442be45e520677c
-        return null;
+
+        String FORMAT = "%s : %s, ";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format(FORMAT, "id: ", getId()));
+        sb.append(String.format(FORMAT, "title: ", getTitle()));
+
+        return sb.toString();
     }
 
+    /**
+     * @return A JSON representation of this book.
+     */
     public String toJSON()
     {
         StringBuilder sb = new StringBuilder("{");

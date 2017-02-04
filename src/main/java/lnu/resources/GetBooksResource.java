@@ -33,18 +33,16 @@ public class GetBooksResource
                 " the hugely successful The Art of Electronics. Widely " +
                 "accepted as the authoritative text and reference on " +
                 "electronic circuit design, both analog and digital, this " +
-                "book" +
-                " revolutionized the teaching of electronics by emphasizing " +
-                "the methods actually used by circuit designers -- a " +
-                "combination of some basic laws, rules of thumb, and a large " +
-                "bag of tricks. The result is a largely nonmathematical " +
-                "treatment that encourages circuit intuition, brainstorming, " +
-                "and simplified calculations of circuit values and " +
+                "book revolutionized the teaching of electronics by " +
+                "emphasizing the methods actually used by circuit designers " +
+                "-- a combination of some basic laws, rules of thumb, and a " +
+                "large bag of tricks. The result is a largely nonmathematical" +
+                " treatment that encourages circuit intuition, brainstorming," +
+                " and simplified calculations of circuit values and " +
                 "performance.",
                 "Paul Horowitz", "Winfield Hill");
 
         System.out.println(book1.toJSON());
-        // return book1.toJSON();
-        return null;
+        return book1.toJSON();
     }
 }
