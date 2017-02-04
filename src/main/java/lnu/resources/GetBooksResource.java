@@ -43,7 +43,8 @@ public class GetBooksResource
                 "performance.",
                 "Paul Horowitz", "Winfield Hill");
 
-        System.out.println("i hate web development so so so very much");
-        return book1.toJSON();
+        System.out.println(book1.toJSON());
+        // return book1.toJSON();
+        return null;
     }
 }

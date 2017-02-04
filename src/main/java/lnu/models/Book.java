@@ -1,5 +1,10 @@
-package lnu.models;
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// 1DV600 -- Software Technology
+// Assignment 1: Personal planning, Vision and Project Plan
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Created by Jonas Sjöberg (js224eh) on 2017-02-01.
 
+package lnu.models;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,13 +77,14 @@ public class Book
 
     public String toString()
     {
-        return "MJAOA";
+        // Bug in dropwizard does not allow returning toJSON() from here.
+        // ERROR [2017-02-04 18:25:48,186] io.dropwizard.jersey.errors.LoggingExceptionMapper: Error handling a request: 4442be45e520677c
+        return null;
     }
 
     public String toJSON()
     {
         StringBuilder sb = new StringBuilder("{");
-
         sb.append("\"id\": \"").append(getId()).append("\", ");
         sb.append("\"title\": \"").append(getTitle()).append("\", ");
         sb.append("\"author\": \"").append(getAuthors()).append("\", ");
@@ -86,8 +92,6 @@ public class Book
         sb.append("\"published\": \"").append(getDate()).append("\", ");
         sb.append("\"price\": \"").append(getPrice()).append("\", ");
         sb.append("\"description\": \"").append(getDescription()).append("\", ");
-        sb.append("}");
-
-        return sb.toString();
+        return sb.append("}").toString();
     }
 }
