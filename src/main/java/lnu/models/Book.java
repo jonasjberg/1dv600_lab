@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
+/**
+ * The book class represents a single unique book.
+ */
 public class Book
 {
     private static final String STRING_VALUE_DELIMITER = ",";
@@ -28,16 +31,10 @@ public class Book
     private final double            price;
     /* A description of this book. */
     private final String            description;
-    /* An unique id for this book.
-    /* The title of this book.
-    /* The author(s) of this book.
-    /* The genre of this book.
-    /* The date this book was published.
-    /* The price of this book in dollars.
-    /* A description of this book.
 
     /**
      * Instantiates a new "Book" object.
+     * All instance fields are set at object creation through the constructor.
      *
      * @param id           An unique id for this book.
      * @param title        The title of this book.
@@ -61,15 +58,18 @@ public class Book
         Collections.addAll(this.authors, authors);
     }
 
+    /**
+     * @return The id of this book.
+     */
     public String getId()
     {
         return id;
     }
 
-    public String getTitle()
-    {
-        return title;
-    }
+    /**
+     * @return The title of this book.
+     */
+    public String getTitle() { return title; }
 
     /**
      * Returns the author of this book. If there are multiple authors, the
@@ -86,26 +86,43 @@ public class Book
         }
     }
 
+    /**
+     * @return The genre of this book.
+     */
     public String getGenre()
     {
         return genre;
     }
 
+    /**
+     * @return The date that this book was published.
+     */
     public String getDate()
     {
         return date;
     }
 
+    /**
+     * @return The price of this book.
+     */
     public double getPrice()
     {
         return price;
     }
 
+    /**
+     * @return A description of this book.
+     */
     public String getDescription()
     {
         return description;
     }
 
+    /**
+     * Returns a this book as a human-readable text string.
+     *
+     * @return This book as a string.
+     */
     public String toString()
     {
         /* A bug in either DropWizard and/or Gradle does not allow returning
