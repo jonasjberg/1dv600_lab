@@ -131,7 +131,7 @@ public class Book
          *
          * ERROR [2017-02-04 18:25:48,186] io.dropwizard.jersey.errors.LoggingExceptionMapper: Error handling a request: 4442be45e520677c
          */
-        String FORMAT = "%s : %s, ";
+        final String FORMAT = "%s : %s, ";
 
         StringBuilder sb = new StringBuilder();
         sb.append(String.format(FORMAT, "id: ", getId()));
@@ -147,7 +147,7 @@ public class Book
      */
     public String toJSON()
     {
-        String FORMAT = "\"%s\": \"%s\", ";
+        final String FORMAT = "\"%s\": \"%s\", ";
 
         StringBuilder sb = new StringBuilder("{");
         sb.append(String.format(FORMAT, "id", getId()));
