@@ -30,92 +30,48 @@ end header
 
 title Use Case Diagram
 
-'
-' * AF 1: Skapa figur.
-'         Användaren väljer ’skapa figur’ och sedan vilken typ figuren ska ha.
-'         Möjliga värden är: Punkt, linje, triangel, rektangel, cirkel och
-'         kanske ellips och kvadrat.  Systemet ger användaren möjlighet att
-'         mata in värden som behövs för att definiera den önskade figuren.
-'         Systemet använder sedan värden för att skapa ett objekt av vald typ
-'         och tilldelar objektet till passande objektlista (t.ex. figur-lista,
-'         lista med flyttbara figurer, lista med roterbara figurer mm. - se
-'         nedan).
-' * AF 2: Ta bort alla figurer.
-'         Användaren väljer ’Ta bort allt’.
-'         Systemet tömmer alla listor.
-' * AF 3: Rita ut alla figurer.
-'         Användaren väljer ’Rita ut allt’.
-'         Systemet visar alla figurer som kan ritas.
-'         Obs: Detta användningsfall kommer att behandlas först i laboration 3.
-' * AF 4: Skriv ut data till alla figurer.
-'         Användaren väljer ’Skriv ut allt’.
-'         Systemet skriver ut data till alla figurer på konsollen.
-' * AF 5: Förflytta alla flyttbara figurer.
-'         Användaren väljer ’Förflytta allt’.
-'         Systemet ger användaren möjlighet att mata in värden dx, dy.
-'         Systemet förflyttar alla figurer som kan förflyttas.
-' * AF 6: Ändra storlek till alla skalerbara figurer.
-'         Användaren väljer ’Ändra storlek till alla’.
-'         Systemet ger användaren möjlighet att mata in värden sx, sy.
-'         Systemet ändrar storleken till alla figurer som tillåter detta.
-' * AF 7: Rotera alla roterbara figurer.
-'         Användaren väljer ’Rotera alla’.
-'         Systemet ger användaren möjlighet att mata in ett vinkel-värde.
-'         Systemet roterar alla figurer som kan roteras.
 
-:Användare: as User
+:User: as User
 
-rectangle "Programmet" {
-    (Skapa figur)                                as (CreateFigure)
-    (Ta bort alla figurer)                       as (RemoveAllFigures)
-    (Rita ut alla figurer)                       as (DrawAllFigures)
-    (Skriv ut data till alla figurer)            as (PrintDataAllFigures)
-    (Förflytta alla flyttbara figurer)           as (MoveAllMovable)
-    (Ändra storlek till alla skalerbara figurer) as (ScaleAllScalable)
-    (Rotera alla roterbara figurer)              as (RotateAllRotatable)
+rectangle "Book Application" {
+    (Add a Book)                                 as (AddBook)
+    (Remove Book)                                as (RemoveBook)
+    (Display all Books)                        as (DisplayBooks)
+    (Display Data for a Book)                    as (DisplayBookData)
 
     left to right direction
-    User - CreateFigure
-    User - RemoveAllFigures
-    User - DrawAllFigures
-    User - PrintDataAllFigures
-    User - MoveAllMovable
-    User - ScaleAllScalable
-    User - RotateAllRotatable
+    User - AddBook
+    User - RemoveBook
+    User - DisplayBooks
+    User - DisplayBookData
 }
 
-note right of CreateFigure
-* Systemet ger användaren möjlighet att mata in värden
-som behövs för att definiera den önskade figuren.
-* Systemet använder sedan värden för att skapa ett objekt
-av vald typ och tilldelar objektet till passande objektlista.
+note right of AddBook
+* * The application shall provide functionality
+   for the user to add a book to the collection
+   of books.
+* * The application shall use the data provided
+   by the user to create a book object that is
+   stored in the application database.
 end note
 
-note right of RemoveAllFigures
-* Systemet tömmer alla listor.
+note right of RemoveBook
+* * The application shall provide functionality
+   for the user to remove a book.
+* * The application shall remove the corresponding
+   book entry from the application database.
 end note
 
-note right of DrawAllFigures
-* Systemet visar alla figurer som kan ritas.
+note right of DisplayBooks
+* * The application shall provide a means of
+   visually displaying the stored books along
+   with their corresponding metadata.
 end note
 
-note right of PrintDataAllFigures
-* Systemet skriver ut data till alla figurer på konsollen.
-end note
-
-note right of MoveAllMovable
-* Systemet ger användaren möjlighet att mata in värden dx, dy.
-* Systemet förflyttar alla figurer som kan förflyttas.
-end note
-
-note right of ScaleAllScalable
-* Systemet ger användaren möjlighet att mata in värden sx, sy.
-* Systemet ändrar storleken till alla figurer som tillåter detta.
-end note
-
-note right of RotateAllRotatable
-* Systemet ger användaren möjlighet att mata in ett vinkel-värde.
-* Systemet roterar alla figurer som kan roteras.
+note right of DisplayBookData
+* * The application shall provide functionality
+   for the user to view all metadata stored for
+   a certain book.
 end note
 
 @enduml
