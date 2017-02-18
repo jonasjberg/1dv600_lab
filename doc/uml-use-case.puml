@@ -28,22 +28,30 @@ Linnaeus University
 ""https://github.com/jonasjberg""
 end header
 
-title Use Case Diagram
-
+title 1DV600 - Assignment 2 \n <b>Book Library Use Case Diagram</b>
 
 :User: as User
 
-rectangle "Book Application" {
-    (Add a Book)                                 as (AddBook)
-    (Remove Book)                                as (RemoveBook)
-    (Display all Books)                        as (DisplayBooks)
-    (Display Data for a Book)                    as (DisplayBookData)
+rectangle "Book Library" {
+    (Add a Book)                    as (AddBook)
+    (Remove Book)                   as (RemoveBook)
+    (Modify existing Book)          as (ModifyBook)
+    (Enter Book Metadata)           as (EnterMetadata)
+    (List all Books)                as (ListBooks)
+    (Show Data for a Book)          as (ShowBookData)
+    (Handle Invalid Entry)          as (HandleInvalidEntry)
 
     left to right direction
     User - AddBook
+    User - ModifyBook
+    User - ShowBookData
     User - RemoveBook
-    User - DisplayBooks
-    User - DisplayBookData
+    User - ListBooks
+
+    (HandleInvalidEntry) .> (EnterMetadata) : extende
+    (AddBook) .> (EnterMetadata) : include
+    (ModifyBook) .> (EnterMetadata) : include
+    ' (EnterMetadata) .> (ShowBookData) : include
 }
 
 note right of AddBook
@@ -55,6 +63,13 @@ note right of AddBook
    stored in the application database.
 end note
 
+note right of ModifyBook
+* The application shall provide means for the
+user to modify a previously entered book, this
+means modifying the metadata fields stored for
+this particular book.
+end note
+
 note right of RemoveBook
 * * The application shall provide functionality
    for the user to remove a book.
@@ -62,16 +77,17 @@ note right of RemoveBook
    book entry from the application database.
 end note
 
-note right of DisplayBooks
-* * The application shall provide a means of
-   visually displaying the stored books along
-   with their corresponding metadata.
+note right of ListBooks
+* The application shall provide a means of
+visually displaying all stored books along
+with their corresponding metadata in a table.
 end note
 
-note right of DisplayBookData
+note right of ShowBookData
 * * The application shall provide functionality
    for the user to view all metadata stored for
    a certain book.
+* * This view is used for "Modify existing Book".
 end note
 
 @enduml
