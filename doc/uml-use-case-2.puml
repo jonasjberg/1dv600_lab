@@ -1,0 +1,60 @@
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' 1DV600 -- Software Technology
+' Assignment 2: Analysis, Design and Implementation
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' Created by Jonas Sjöberg (js224eh) on 2017-02-18.
+' Linnaeus University
+' ""js224eh@student.lnu.se""
+' ""http://www.jonasjberg.com""
+' ""https://github.com/jonasjberg""
+
+@startuml
+' ______________________________________________________________________________
+' ____ CONFIGURATION OPTIONS ___________________________________________________
+' debug flag creates a 'svek.dot' and 'svek.svg' file in ~/
+' !pragma svek_trace on
+
+skinparam {
+    monochrome true
+    backgroundColor transparent
+    classBackgroundColor transparent
+    'style strictuml
+}
+
+' ______________________________________________________________________________
+' ____ USECASE DIAGRAM _________________________________________________________
+
+header
+1DV600 - Assignment 2 -- Book Library
+Jonas Sjöberg <""js224eh@student.lnu.se"">
+end header
+
+title \nUse Case #2\nListing all Book in the Library
+
+:User: as User
+
+rectangle "Book Library Application" {
+    (List all Books)                as (ListBooks)
+    (Show Data for a Book)          as (ShowBookData)
+
+    left to right direction
+    User - ShowBookData
+    User - ListBooks
+
+
+    (ShowBookData) .> (ListBooks) : extends
+}
+
+note right of ListBooks
+* The application shall provide a means of
+visually displaying all stored books along
+with their corresponding metadata in a table.
+end note
+
+note right of ShowBookData
+* The application shall provide functionality
+for the user to view all metadata stored for
+a certain book.
+end note
+
+@enduml
