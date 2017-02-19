@@ -22,11 +22,11 @@ end header
 
 title \nUse Case #1\nAdding a Book to the Library
 
-
 actor Gibson
 boundary "Book Library Frontend" as frontend
 control "Validate input" as validate
 
+left to right direction
 rectangle Server {
 database Database {
   entity Book
@@ -35,8 +35,7 @@ control "Create Book" as createBook
 createBook -- Book
 }
 
-'Gibson - frontend: Add New Book
-Gibson - frontend
+Gibson -- frontend
 frontend -> validate
 validate -> createBook
 
