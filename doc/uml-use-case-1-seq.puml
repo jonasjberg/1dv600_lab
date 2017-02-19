@@ -1,0 +1,41 @@
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' 1DV600 -- Software Technology
+' Assignment 2: Analysis, Design and Implementation
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' Created by Jonas Sjöberg (js224eh) on 2017-02-18.
+
+@startuml
+' debug flag creates a 'svek.dot' and 'svek.svg' file in ~/
+' !pragma svek_trace on
+
+skinparam {
+    monochrome true
+    backgroundColor transparent
+    classBackgroundColor transparent
+    style strictuml
+}
+
+
+header
+1DV600 - Assignment 2 -- Book Library
+Jonas Sjöberg <""js224eh@student.lnu.se"">
+end header
+
+title \nUse Case #1\nAdding a Book to the Library
+
+
+actor Gibson
+
+Gibson -> "Book Library Frontend" as frontend: Add New Book Request
+frontend --> Gibson: Redraw Application Page
+
+|||
+
+Gibson -> frontend: Submit all Metadata Fields
+frontend -> "Backend Server" as backend: Create new Book entry
+
+database "Backend Database" as db
+backend -> db: Add new Book to Library
+|||
+
+@enduml
