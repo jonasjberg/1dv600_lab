@@ -16,7 +16,7 @@ import java.util.Collections;
 /**
  * The book class represents a single unique book.
  */
-public class Book
+public class Book implements Comparable<Book>
 {
     private static final String STRING_VALUE_DELIMITER = ",";
 
@@ -166,4 +166,51 @@ public class Book
 
         return jsonString;
     }
+
+    /**
+     * Compare this book with another book.
+     *
+     * Compares the unique IDs for the books by calling 'getID',
+     * followed by comparing the returned strings.
+     * If the IDs match, the books are considered duplicates.
+     *
+     * @param otherBook The book to compare with the calling object.
+     * @return Zero (0) if the books are equal, otherwise non-zero.
+     */
+    @Override
+    public int compareTo(Book otherBook)
+    {
+        try {
+            int thisId  = Integer.valueOf(this.getId());
+            int otherId = Integer.valueOf(otherBook.getId());
+            return thisId - otherId;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        return this.getId().compareTo(otherBook.getId());
+    }
+
+    /**
+     * Compare this book with another object.
+     *
+     * The comparison returns false if the object is not a book.
+     * Otherwise the unique IDs for the books are compared by calling 'getID'.
+     * The books are considered duplicates if the IDs match.
+    *
+     * @param o The object to compare with the calling object.
+     * @return True if the books are equals, otherwise False.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        } else if (!Book.class.isAssignableFrom(o.getClass())) {
+            return false;
+        }
+
+        final Book otherBook = (Book) o;
+        return this.getId().equals(otherBook.getId());
+    }
+
 }
