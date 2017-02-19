@@ -29,19 +29,19 @@ public class Book implements Comparable<Book>
     private static final String STRING_VALUE_DELIMITER = ",";
 
     /* An unique id for this book. */
-    private final String            id;
+    private String            id;
     /* The title of this book. */
-    private final String            title;
+    private String            title;
     /* The author(s) of this book. */
-    private final ArrayList<String> authors;
+    private ArrayList<String> authors;
     /* The genre of this book. */
-    private final Genre             genre;
+    private Genre             genre;
     /* The date this book was published. */
-    private final String            date;
+    private String            date;
     /* The price of this book in dollars. */
-    private final double            price;
+    private double            price;
     /* A description of this book. */
-    private final String            description;
+    private String            description;
 
     /**
      * Instantiates a new "Book" object.
@@ -69,6 +69,7 @@ public class Book implements Comparable<Book>
         Collections.addAll(this.authors, authors);
     }
 
+
     /**
      * @return The id of this book.
      */
@@ -79,9 +80,22 @@ public class Book implements Comparable<Book>
     }
 
     /**
+     * Sets the id of this Book.
+     *
+     * @param id The new id
+     */
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+
+    /**
      * @return The title of this book.
      */
     public String getTitle() { return title; }
+
+    public void setTitle(String title) { this.title = title; }
+
 
     /**
      * Returns the author of this book. If there are multiple authors, the
@@ -96,6 +110,11 @@ public class Book implements Comparable<Book>
         } else {
             return String.join(STRING_VALUE_DELIMITER, this.authors);
         }
+    }
+
+    public void setAuthors(ArrayList<String> authors)
+    {
+        this.authors = authors;
     }
 
     /**
@@ -118,12 +137,24 @@ public class Book implements Comparable<Book>
     }
 
     /**
+     * Sets the genre of this book.
+     * @param genre The genre this book belongs to.
+     */
+    public void setGenre(Genre genre) { this.genre = genre; }
+
+    /**
      * @return The date that this book was published.
      */
     @XmlElement(name = "publish_date")
     public String getDate()
     {
         return date;
+    }
+
+    @XmlElement(name = "publish_date")
+    public void setDate(String date)
+    {
+        this.date = date;
     }
 
     /**
@@ -134,12 +165,22 @@ public class Book implements Comparable<Book>
         return price;
     }
 
+    public void setPrice(double price)
+    {
+        this.price = price;
+    }
+
     /**
      * @return A description of this book.
      */
     public String getDescription()
     {
         return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 
     /**

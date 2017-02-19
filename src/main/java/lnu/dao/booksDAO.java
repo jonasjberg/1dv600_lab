@@ -13,6 +13,7 @@ package lnu.dao;
 
 
 import lnu.models.Book;
+import lnu.models.Catalog;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -23,17 +24,22 @@ import java.io.File;
 public class booksDAO
 {
     private static final String FILE_NAME = "books.xml";
+    private final Catalog bookCatalog = new Catalog();;
 
     public booksDAO()
     {
-
     }
 
+    /**
+     * Reads an XML file and converts the entries to Java "Book" Objects.
+     *
+     * @return The
+     */
     private static Book jaxbXMLToObject() {
         try {
             JAXBContext  context = JAXBContext.newInstance(Book.class);
             Unmarshaller un      = context.createUnmarshaller();
-            Book         book     = (Book) un.unmarshal(new File(FILE_NAME));
+            Book         book    = (Book) un.unmarshal(new File(FILE_NAME));
             return book;
         } catch (JAXBException e) {
             /* TODO: Error handling, logging. */
