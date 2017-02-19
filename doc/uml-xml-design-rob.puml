@@ -1,0 +1,53 @@
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' 1DV600 -- Software Technology
+' Assignment 2: Analysis, Design and Implementation
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' Created by Jonas Sjöberg (js224eh) on 2017-02-19.
+
+@startuml
+' debug flag creates a 'svek.dot' and 'svek.svg' file in ~/
+' !pragma svek_trace on
+
+skinparam {
+    monochrome true
+    backgroundColor transparent
+    classBackgroundColor transparent
+    style strictuml
+}
+
+
+header
+1DV600 - Assignment 2 -- Book Library
+Jonas Sjöberg <""js224eh@student.lnu.se"">
+end header
+
+title \nTask 2: Logic Design for XML Reader
+
+left to right direction
+
+actor fs as "Filesystem"
+entity file as "XML File"
+fs ~> file
+
+rectangle "XML File Reader" {
+    boundary read as "Read File"
+    control parse as "Parse File"
+    control factory as "Object Factory"
+    control jsonwriter as "JSON Writer"
+}
+
+file - read
+read -> parse
+parse -> factory
+factory -> jsonwriter
+
+entity jsonfile as "JSON Data"
+jsonwriter - jsonfile
+
+actor browser as "Web Browser"
+jsonfile ~> browser
+
+
+
+
+@enduml
