@@ -9,13 +9,11 @@
 ' !pragma svek_trace on
 
 skinparam {
-    'monochrome true
-    'backgroundColor transparent
+    monochrome true
+    backgroundColor transparent
     classBackgroundColor transparent
     style strictuml
 }
-
-' TODO: EVERYTHING!!!!1
 
 header
 1DV600 - Assignment 2 -- Book Library
@@ -27,15 +25,19 @@ title \nUse Case #1\nAdding a Book to the Library
 
 actor Gibson
 boundary "Book Library Frontend" as frontend
+control "Validate input" as validate
 
-Gibson->frontend: Add New Book Request
-'Gibson -> frontend
+rectangle Server {
+database Database {
+  entity Book
+}
+control "Create Book" as createBook
+createBook -- Book
+}
 
-
-Gibson -> frontend: Submit all Metadata Fields
-'frontend -> "Backend Server" as backend: Create new Book entry
-
-database "Backend Database" as db
-backend -> db: Add new Book to Library
+'Gibson - frontend: Add New Book
+Gibson - frontend
+frontend -> validate
+validate -> createBook
 
 @enduml
