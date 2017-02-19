@@ -3,6 +3,10 @@
 ' Assignment 2: Analysis, Design and Implementation
 ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ' Created by Jonas Sjöberg (js224eh) on 2017-02-18.
+' Linnaeus University
+' ""js224eh@student.lnu.se""
+' ""http://www.jonasjberg.com""
+' ""https://github.com/jonasjberg""
 
 @startuml
 ' ______________________________________________________________________________
@@ -21,18 +25,15 @@ skinparam {
 ' ____ USECASE DIAGRAM _________________________________________________________
 
 header
-Jonas Sjöberg (js224eh)
-Linnaeus University
-""js224eh@student.lnu.se""
-""http://www.jonasjberg.com""
-""https://github.com/jonasjberg""
+1DV600 - Assignment 2 -- Book Library
+Jonas Sjöberg <""js224eh@student.lnu.se"">
 end header
 
-title \n 1DV600 - Assignment 2 -- Book Library\n<b>Use Case #1: Adding a Book</b>
+title \nUse Case #1\nAdding a Book to the Library
 
 :User: as User
 
-rectangle "Adding a Book to the Library" {
+rectangle "Book Library Application" {
     (Handle Invalid Entry)          as (HandleInvalidEntry)
     (Add a Book)                    as (AddBook)
     (Enter Book Metadata)           as (EnterMetadata)
