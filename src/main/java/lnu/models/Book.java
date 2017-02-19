@@ -6,9 +6,14 @@
 
 package lnu.models;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,6 +21,9 @@ import java.util.Collections;
 /**
  * The book class represents a single unique book.
  */
+@XmlRootElement(name = "Book")
+@XmlType(propOrder = {"author", "title", "genre", "price", "publish_date",
+                      "description"})
 public class Book implements Comparable<Book>
 {
     private static final String STRING_VALUE_DELIMITER = ",";
@@ -64,6 +72,7 @@ public class Book implements Comparable<Book>
     /**
      * @return The id of this book.
      */
+    @XmlAttribute
     public String getId()
     {
         return id;
@@ -90,6 +99,17 @@ public class Book implements Comparable<Book>
     }
 
     /**
+     * Returns the author or in the case of multiple authors, the first
+     * author in the list. The list ordering can not be guaranteed.
+     *
+     * @return The author of the book, in the case of many authors, the first author in the list.
+     */
+    public String getAuthor()
+    {
+        return authors.get(0);
+    }
+
+    /**
      * @return The genre of this book.
      */
     public String getGenre()
@@ -100,6 +120,7 @@ public class Book implements Comparable<Book>
     /**
      * @return The date that this book was published.
      */
+    @XmlElement(name = "publish_date")
     public String getDate()
     {
         return date;
@@ -155,8 +176,8 @@ public class Book implements Comparable<Book>
      */
     public String toJSON()
     {
-        String jsonString  = null;
-        ObjectMapper mapper = new ObjectMapper();
+        String       jsonString = null;
+        ObjectMapper mapper     = new ObjectMapper();
 
         try {
             jsonString = mapper.writeValueAsString(this);
@@ -197,12 +218,13 @@ public class Book implements Comparable<Book>
      * The comparison returns false if the object is not a book.
      * Otherwise the unique IDs for the books are compared by calling 'getID'.
      * The books are considered duplicates if the IDs match.
-    *
+     *
      * @param o The object to compare with the calling object.
      * @return True if the books are equals, otherwise False.
      */
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (o == null) {
             return false;
         } else if (!Book.class.isAssignableFrom(o.getClass())) {
@@ -212,5 +234,4 @@ public class Book implements Comparable<Book>
         final Book otherBook = (Book) o;
         return this.getId().equals(otherBook.getId());
     }
-
 }
