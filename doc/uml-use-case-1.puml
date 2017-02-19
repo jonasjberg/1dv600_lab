@@ -1,0 +1,100 @@
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' 1DV600 -- Software Technology
+' Assignment 2: Analysis, Design and Implementation
+' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+' Created by Jonas Sjöberg (js224eh) on 2017-02-18.
+
+@startuml
+' ______________________________________________________________________________
+' ____ CONFIGURATION OPTIONS ___________________________________________________
+' debug flag creates a 'svek.dot' and 'svek.svg' file in ~/
+' !pragma svek_trace on
+
+skinparam {
+    monochrome true
+    backgroundColor transparent
+    classBackgroundColor transparent
+    'style strictuml
+}
+
+' ______________________________________________________________________________
+' ____ USECASE DIAGRAM _________________________________________________________
+
+header
+Jonas Sjöberg (js224eh)
+Linnaeus University
+""js224eh@student.lnu.se""
+""http://www.jonasjberg.com""
+""https://github.com/jonasjberg""
+end header
+
+title \n 1DV600 - Assignment 2 -- Book Library\n<b>Use Case #1: Adding a Book</b>
+
+:User: as User
+
+rectangle "Adding a Book to the Library" {
+    (Handle Invalid Entry)          as (HandleInvalidEntry)
+    (Add a Book)                    as (AddBook)
+    (Enter Book Metadata)           as (EnterMetadata)
+    (List all Books)                as (ListBooks)
+    (Show Data for a Book)          as (ShowBookData)
+
+    left to right direction
+    User - AddBook
+    User - ShowBookData
+    User - ListBooks
+
+
+    (AddBook) .> (EnterMetadata) : include
+    (AddBook) .> (ShowBookData) : include
+    (HandleInvalidEntry) .> (EnterMetadata) : extends
+    ' (EnterMetadata) .> (ShowBookData) : include
+}
+
+/'
+note right of AddBook
+* * The application shall provide functionality
+   for the user to add a book to the collection
+   of books.
+* * The application shall use the data provided
+   by the user to create a book object that is
+   stored in the application database.
+end note
+'/
+
+/'
+note right of ModifyBook
+* The application shall provide means for the
+user to modify a previously entered book, this
+means modifying the metadata fields stored for
+this particular book.
+end note
+'/
+
+/'
+note right of RemoveBook
+* * The application shall provide functionality
+   for the user to remove a book.
+* * The application shall remove the corresponding
+   book entry from the application database.
+end note
+'/
+
+/'
+note right of ListBooks
+* The application shall provide a means of
+visually displaying all stored books along
+with their corresponding metadata in a table.
+end note
+'/
+
+/'
+note right of ShowBookData
+* * The application shall provide functionality
+   for the user to view all metadata stored for
+   a certain book.
+* * This view is used for "Modify existing Book".
+end note
+'/
+
+@enduml
