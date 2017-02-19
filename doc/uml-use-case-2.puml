@@ -18,7 +18,7 @@ skinparam {
     monochrome true
     backgroundColor transparent
     classBackgroundColor transparent
-    'style strictuml
+    style strictuml
 }
 
 ' ______________________________________________________________________________
