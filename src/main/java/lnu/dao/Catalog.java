@@ -5,8 +5,10 @@
 ** Created by Jonas Sjöberg (js224eh) on 2017-02-19.
 **/
 
-package lnu.models;
+package lnu.dao;
 
+
+import lnu.models.Book;
 
 import java.util.ArrayList;
 
