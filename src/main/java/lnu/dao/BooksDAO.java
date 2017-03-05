@@ -28,12 +28,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class booksDAO
+public class BooksDAO
 {
     private static final String  FILE_NAME   = "books.xml";
     private static final Catalog bookCatalog = new Catalog();
 
-    public booksDAO()
+    public BooksDAO()
     {
     }
 
