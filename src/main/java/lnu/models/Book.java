@@ -96,14 +96,13 @@ public class Book implements Comparable<Book>
 
     public void setTitle(String title) { this.title = title; }
 
-
     /**
      * Returns the author of this book. If there are multiple authors, the
      * names are joined with "STRING_VALUE_DELIMITER".
      *
      * @return The author(s) of this book.
      */
-    public String getAuthors()
+    public String getAuthor()
     {
         if (authors.size() == 1) {
             return authors.get(0);
@@ -112,20 +111,20 @@ public class Book implements Comparable<Book>
         }
     }
 
-    public void setAuthors(ArrayList<String> authors)
-    {
-        this.authors = authors;
-    }
-
     /**
-     * Returns the author or in the case of multiple authors, the first
-     * author in the list. The list ordering can not be guaranteed.
+     * Set the author of this book to a new author or any number
+     * of authors as Strings.
      *
-     * @return The author of the book, in the case of many authors, the first author in the list.
+     * @param newAuthors The new author(s) of this book.
      */
-    public String getAuthor()
+    public void setAuthor(String... newAuthors)
     {
-        return authors.get(0);
+        if (newAuthors != null) {
+            authors.clear();
+            Collections.addAll(authors, newAuthors);
+        } else {
+            // TODO: Log unexpected argument warning.
+        }
     }
 
     /**
@@ -205,7 +204,7 @@ public class Book implements Comparable<Book>
         sb.append(String.format(FORMAT, "date", getDate()));
         sb.append(String.format(FORMAT, "price", getPrice()));
         sb.append(String.format(FORMAT, "description ", getDescription()));
-        sb.append(String.format(FORMAT, "author", getAuthors()));
+        sb.append(String.format(FORMAT, "author", getAuthor()));
 
         return sb.append("}\n").toString();
     }
@@ -274,5 +273,10 @@ public class Book implements Comparable<Book>
 
         final Book otherBook = (Book) o;
         return this.getId().equals(otherBook.getId());
+    }
+
+    public String getPublish_date()
+    {
+        return getDate();
     }
 }
