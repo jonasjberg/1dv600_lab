@@ -21,6 +21,7 @@ public enum Genre
     HORROR,
     NONFICTION,
     NOVEL,
+    PROGRAMMING,
     SATIRE,
     SCIFI,
     TEXTBOOK,

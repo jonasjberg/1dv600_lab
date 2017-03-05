@@ -31,15 +31,20 @@ import java.util.ArrayList;
 public class BooksDAO
 {
     private static final String  FILE_NAME   = "books.xml";
-    private static final Catalog bookCatalog = new Catalog();
+    private static Catalog bookCatalog;
+    private File localBookXmlFile;
 
-    public BooksDAO() { }
-
-    public static void getBooks()
+    public BooksDAO()
     {
-        File localBookXmlFile = getFileFromPath(FILE_NAME);
+        bookCatalog = new Catalog();
+        localBookXmlFile = getFileFromPath(FILE_NAME);
+    }
+
+    public ArrayList<Book> getBooks()
+    {
         // bookCatalog.addBooks(readBooksFromFile(localBookXmlFile));
         bookCatalog.addBook(jaxbXMLToObject(localBookXmlFile));
+        return bookCatalog.getBooks();
     }
 
     /**

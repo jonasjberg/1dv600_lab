@@ -9,6 +9,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 
 // Response will be JSON
@@ -24,6 +30,7 @@ public class GetBooksResource
     @GET
     public String getBooks()
     {
+        /*
         Book book1 = new Book(
                 "978-0521370950",
                 "The Art of Electronics",
@@ -56,7 +63,27 @@ public class GetBooksResource
                 "practical, user-oriented book covers all the basics for " +
                 "working with digital logic and many of its end applications.",
                 "Don Lancaster", "Howard M. Berlin");
+        */
 
-        return book1.toJSON() + "," + book2.toJSON();
+        BooksDAO booksDAO = new BooksDAO();
+
+        /* Should return up-to-date list of books from XML file on disk. */
+        ArrayList<Book> books = booksDAO.getBooks();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String json = "";
+
+        try {
+            json = objectMapper.writeValueAsString(books);
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return json;
     }
 }
