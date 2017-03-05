@@ -152,18 +152,25 @@ public class BookTest
         // TODO: Implement ..
     }
 
-    @Ignore
     @Test
     public void testToJSON() throws Exception
     {
-        // TODO: Implement ..
+        final String expectBook1JSON = "{\"id\":\"1\",\"title\":\"Foundation\",\"genre\":\"SCIFI\",\"date\":\"1951-08-21\",\"price\":164.0,\"description\":\"Foundation is the first novel in Isaac Asimovs Foundation Trilogy (later expanded into The Foundation Series). Foundation is a cycle of five interrelated short stories, first published as a single book by Gnome Press in 1951. Collectively they tell the story of the Foundation, an institute to preserve the best of galactic civilization after the collapse of the Galactic Empire.\",\"author\":\"Isaac Asimov\",\"publish_date\":\"1951-08-21\"}";
+        final String expectBook2JSON = "{\"id\":\"5\",\"title\":\"Alice in Wonderland\",\"genre\":\"NOVEL\",\"date\":\"1865-11-26\",\"price\":99.0,\"description\":\"Alice in Wonderland tells of a girl named Alice falling through a rabbit hole into a fantasy world populated by peculiar, anthropomorphic creatures. The tale plays with logic, giving the story lasting popularity with adults as well as with children. It is considered to be one of the best examples of the literary nonsense genre. Its narrative course and structure, characters and imagery have been enormously influential in both popular culture and literature, especially in the fantasy genre.\",\"author\":\"Lewis Carroll\",\"publish_date\":\"1865-11-26\"}";
+        assertEquals(expectBook1JSON, book1.toJSON());
+        assertEquals(expectBook2JSON, book2.toJSON());
     }
 
-    @Ignore
     @Test
     public void testCompareTo() throws Exception
     {
-        // TODO: Implement ..
+        boolean firstComp = book1.compareTo(book2) >= 0;
+        assertFalse(firstComp);
+
+        Book book1Clone = new Book("1", "Foundation", Genre.SCIFI, "1951-08-21",
+                                   164, BOOK1_DESCRIPTION, "Isaac Asimov");
+        boolean secondComp = book1.compareTo(book1Clone) >= 0;
+        assertTrue(secondComp);
     }
 
     @Ignore
