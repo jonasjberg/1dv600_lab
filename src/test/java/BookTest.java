@@ -109,11 +109,11 @@ public class BookTest
         assertEquals("2066-12-24", book1.getDate());
     }
 
-    @Ignore
     @Test
     public void testGetPublish_date() throws Exception
     {
-        // TODO: Implement ..
+        assertEquals("1951-08-21", book1.getPublish_date());
+        assertEquals("1865-11-26", book2.getPublish_date());
     }
 
     @Test
@@ -173,7 +173,6 @@ public class BookTest
         assertTrue(secondComp);
     }
 
-    @Ignore
     @Test
     public void testEquals() throws Exception
     {
