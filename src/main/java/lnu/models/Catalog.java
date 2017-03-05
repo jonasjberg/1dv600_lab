@@ -43,7 +43,7 @@ public class Catalog
      *
      * @param newBooks The books to add.
      */
-    public void addBooks(Book... newBooks)
+    public void addBook(Book... newBooks)
     {
         for (Book b : newBooks) {
             addBook(b);
