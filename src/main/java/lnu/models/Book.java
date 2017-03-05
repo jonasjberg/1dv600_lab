@@ -159,9 +159,9 @@ public class Book implements Comparable<Book>
     /**
      * @return The price of this book.
      */
-    public double getPrice()
+    public String getPrice()
     {
-        return price;
+        return String.valueOf(price);
     }
 
     public void setPrice(double price)
