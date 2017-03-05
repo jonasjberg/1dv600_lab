@@ -33,11 +33,9 @@ public class BooksDAO
     private static final String  FILE_NAME   = "books.xml";
     private static final Catalog bookCatalog = new Catalog();
 
-    public BooksDAO()
-    {
-    }
+    public BooksDAO() { }
 
-    public void getBooks()
+    public static void getBooks()
     {
         File localBookXmlFile = getFileFromPath(FILE_NAME);
         // bookCatalog.addBooks(readBooksFromFile(localBookXmlFile));
@@ -64,7 +62,7 @@ public class BooksDAO
         return null;
     }
 
-    private File getFileFromPath(String path)
+    private static File getFileFromPath(String path)
     {
         File file = null;
 

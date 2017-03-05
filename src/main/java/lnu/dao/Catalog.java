@@ -41,6 +41,26 @@ public class Catalog
     }
 
     /**
+     * Get all books in the catalog in JSON format.
+     *
+     * @return All the books in the catalog as a JSON string.
+     */
+    public String getBooksAsJSON()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (Book book : books) {
+            sb.append(book.toJSON()).append(",");
+        }
+
+        if (sb.lastIndexOf(",") == sb.length() ) {
+            sb.deleteCharAt(sb.length());
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * Add any number of books to the catalog of books.
      *
      * @param newBooks The books to add.

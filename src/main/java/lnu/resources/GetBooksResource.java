@@ -1,6 +1,7 @@
 package lnu.resources;
 
 
+import lnu.dao.BooksDAO;
 import lnu.models.Book;
 import lnu.models.Genre;
 
@@ -20,7 +21,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/books")
 public class GetBooksResource
 {
-
     @GET
     public String getBooks()
     {
@@ -57,10 +57,6 @@ public class GetBooksResource
                 "working with digital logic and many of its end applications.",
                 "Don Lancaster", "Howard M. Berlin");
 
-        // System.out.println("book1.toString(): " + book1.toString());
-        // System.out.println("book2.toString(): " + book2.toString());
-
-        // return book2.toJSON();
         return book1.toJSON() + "," + book2.toJSON();
     }
 }
